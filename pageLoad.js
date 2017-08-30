@@ -1,6 +1,8 @@
 //
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
-  if(details.url.indexOf("youtube.com") !== -1 && details.url.indexOf("disable_polymer=true") === -1){
+  console.log(details);
+
+  if(detectYTURL(details.url) && details.url.indexOf("disable_polymer=true") === -1){
     if(details.url.indexOf("?") !== -1){
       chrome.tabs.update(details.tabId, {
         url: details.url + "&disable_polymer=true"
@@ -12,3 +14,7 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
     }
   }
 });
+
+function detectYTURL(url){
+  return (url.indexOf("www.youtube.com") !== -1 && url.indexOf("/js") === -1);
+}
