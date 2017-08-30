@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "YouTube Revert",
+    "short_name": "YT Revert",
+    "version": "1.0",
+
+    "description" : "Extension to revert YouTube's design.",
+
+    "icons":{
+        "128": "images/icon-128.png",
+        "48": "images/icon-48.png",
+        "16": "images/icon-16.png"
+    },
+    "background": {
+        "scripts": ["pageLoad.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "webNavigation",
+        "tabs"
+    ]
+}
