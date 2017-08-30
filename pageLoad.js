@@ -16,5 +16,8 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
 });
 
 function detectYTURL(url){
-  return (url.indexOf("www.youtube.com") !== -1 && url.indexOf("/js") === -1);
+  return (
+          (url.indexOf("www.youtube.com") !== -1 || url.indexOf("https://youtube.com" !== -1))
+          && url.indexOf("/js") === -1
+          );
 }
