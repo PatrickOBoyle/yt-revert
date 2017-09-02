@@ -1,5 +1,8 @@
 // listen for page navigations, detect if they're YT & include our disable
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
+  console.log(details);
+  console.log(detectYTURL(details.url));
+  
   if(detectYTURL(details.url) && details.url.indexOf("disable_polymer=true") === -1){
     // append the disabling field
     if(details.url.indexOf("?") !== -1){
@@ -17,5 +20,6 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
 // helper to keep things clean 👍
 function detectYTURL(url){
   return ((url.indexOf("www.youtube.com") !== -1 || url.indexOf("https://youtube.com") !== -1)
-          && url.indexOf("/js") === -1);
+          && url.indexOf("/js") === -1) && url.indexOf("google") === -1 &&
+          url.indexOf("googleads") === -1 && url.indexOf(".g.") === -1;
 }
