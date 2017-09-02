@@ -18,5 +18,6 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
 function detectYTURL(url){
   return ((url.indexOf("www.youtube.com") !== -1 || url.indexOf("https://youtube.com") !== -1)
           && url.indexOf("/js") === -1) && url.indexOf("google") === -1 &&
-          url.indexOf("googleads") === -1 && url.indexOf(".g.") === -1;
+          url.indexOf("googleads") === -1 && url.indexOf(".g.") === -1 &&
+          url.indexOf("www.youtube.com/ad_companion") === -1;
 }
