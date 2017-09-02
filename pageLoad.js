@@ -1,8 +1,5 @@
 // listen for page navigations, detect if they're YT & include our disable
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
-  console.log(details);
-  console.log(detectYTURL(details.url));
-  
   if(detectYTURL(details.url) && details.url.indexOf("disable_polymer=true") === -1){
     // append the disabling field
     if(details.url.indexOf("?") !== -1){
