@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "YouTube Revert",
     "short_name": "YT Revert",
-    "version": "1.1",
+    "version": "1.2",
 
     "description" : "Extension to revert YouTube's design.",
 
