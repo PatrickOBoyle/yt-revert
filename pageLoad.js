@@ -1,15 +1,24 @@
 // listen for new tabs
 chrome.tabs.onCreated.addListener(function (tabId , info) {
-  if(isYouTubeUrl(info.url) && doesUrlNotContainField(info.url)){
-    revertYT(tabId);
+  // info may be undefined when tab created
+  if(typeof(info) != "undefined" && typeof(info.url) != "undefined"){
+    url = info.url;
+
+    if(isYouTubeUrl(url) && doesUrlNotContainField(url)){
+      revertYT(tabId);
+    }
   }
 });
 
 // listen for updated tabs
 chrome.tabs.onUpdated.addListener(function (tabId , info) {
-  // check
-  if(isYouTubeUrl(info.url) && doesUrlNotContainField(info.url)){
-    revertYT(tabId);
+  // not all tab updates contain the URL (such as title, or status complete)
+  if(typeof(info) != "undefined" && typeof(info.url) != "undefined"){
+    url = info.url;
+
+    if(isYouTubeUrl(url) && doesUrlNotContainField(url)){
+      revertYT(tabId);
+    }
   }
 });
 
